@@ -1,0 +1,478 @@
+package com.example.hobo_collab_app
+
+import android.content.Context
+import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.ComponentActivity
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.auth0.android.jwt.JWT
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.hobo_collab_app.ui.theme.Home_Screen
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import org.json.JSONArray
+import java.io.IOException
+
+class MyProfile_AppliedScreen : ComponentActivity() {
+
+    private lateinit var postsRecyclerView: RecyclerView
+    private val client = OkHttpClient()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.myprofile_appliedpart)
+
+        val jwtToken = intent.getStringExtra("jwt_token")
+        Log.d("ProfileAppliedScreen", "ProfileAppliedScreen JWT Token $jwtToken")
+
+        val loginUserId = extractUserIdFromJwt(jwtToken)
+
+        // Extract userId from jwtToken
+        val userId = extractUserIdFromJwt(jwtToken)
+        Log.d("ProfileAppliedScreen", "Extracted userId: $userId")
+
+        fetchProfileData(userId)
+
+        // Initialize RecyclerView
+        postsRecyclerView = findViewById(R.id.recycler_view_posts)
+        postsRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Fetch data from backend
+        fetchPostsFromBackend(loginUserId)
+
+        // after clicking back arrow return to home screen
+        val backArrow : View = findViewById(R.id.back_arrow)
+        backArrow.setOnClickListener {
+            val intent = Intent(this@MyProfile_AppliedScreen, Home_Screen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+
+        // navigate to setting screen
+        val setting : View = findViewById(R.id.setting_icon)
+        setting.setOnClickListener{
+            val intent = Intent(this@MyProfile_AppliedScreen, Setting_Screen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+
+        // navigate to my view screen
+        val myView : TextView = findViewById(R.id.more_btn)
+        myView.setOnClickListener{
+            val intent = Intent(this@MyProfile_AppliedScreen, MyView_Screen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+
+        // navigate to personal information screen
+        val editProfile : FrameLayout = findViewById(R.id.edit_profile_btn)
+        editProfile.setOnClickListener{
+            val intent = Intent(this@MyProfile_AppliedScreen, Personal_Info_Screen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+        //navigate to post column
+        val posts : FrameLayout = findViewById(R.id.user_posts)
+        posts.setOnClickListener{
+            val intent = Intent(this@MyProfile_AppliedScreen, My_Profile_Screen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+
+        // navigate to saved column
+        val savedColumn : FrameLayout =  findViewById(R.id.saved_btn)
+        savedColumn.setOnClickListener{
+            val intent = Intent(this@MyProfile_AppliedScreen, MyProfile_SavedScreen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+
+        // after clicking home button return to home screen
+        val homeButton : View = findViewById(R.id.home_button)
+        homeButton.setOnClickListener {
+            val intent = Intent(this@MyProfile_AppliedScreen, Home_Screen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+
+        // navigate to my collab screen
+        val myCollabScreen : View = findViewById(R.id.collab_button)
+        myCollabScreen.setOnClickListener {
+            val intent = Intent(this@MyProfile_AppliedScreen, MyCollabs_Screen::class.java)
+            intent.putExtra("jwt_token", jwtToken)
+            startActivity(intent)
+            finish()
+        }
+    }
+    private fun extractUserIdFromJwt(jwtToken: String?): String? {
+        if (jwtToken.isNullOrEmpty()) {
+            Log.e("ProfileAppliedScreen", "JWT Token is null or empty")
+            return null
+        }
+
+        return try {
+            val jwt = JWT(jwtToken)
+            val userId = jwt.getClaim("id").asString()
+            if (userId.isNullOrEmpty()) {
+                Log.e("ProfileAppliedScreen", "User ID claim is missing in the JWT Token")
+                null
+            } else {
+                userId
+            }
+        } catch (e: Exception) {
+            Log.e("ProfileAppliedScreen", "Error decoding JWT Token: ${e.message}", e)
+            null
+        }
+    }
+
+    private fun fetchProfileData(userID: String?) {
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://collab-api.hobo.video/api/getProfile/$userID") // Replace with your actual URL
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("API_ERROR", "Failed to fetch profile data: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body?.string()
+                    responseBody?.let {
+                        val gson = Gson()
+                        val listType = object : TypeToken<List<ProfileData>>() {}.type
+                        val profileDataList: List<ProfileData> = gson.fromJson(it, listType)
+                        Log.d("ProfileData", "Profile Data List: $profileDataList")
+                        runOnUiThread {
+                            if (profileDataList.isNotEmpty()) {
+                                updateUIWithProfileData(profileDataList[0]) // Assuming you want the first item
+                            } else {
+                                Log.e("API_ERROR", "Profile data list is empty")
+                            }
+                        }
+                    } ?: Log.e("API_ERROR", "Empty response body")
+                } else {
+                    Log.e("API_ERROR", "Unsuccessful response: ${response.code}")
+                }
+            }
+        })
+    }
+
+    private fun updateUIWithProfileData(profileData: ProfileData) {
+        val userProfileView = findViewById<View>(R.id.user_profile)
+        val userNameTextView = findViewById<TextView>(R.id.user_name)
+
+        // Update the TextView with the user's name
+        userNameTextView.text = profileData.name
+
+        // Load the profile picture if available
+        profileData.profilePic?.let {
+            Glide.with(this)
+                .load(it)
+                .apply(RequestOptions.circleCropTransform())
+                .into(userProfileView as ImageView) // Ensure user_profile is an ImageView
+        }
+    }
+
+    private fun fetchPostsFromBackend(loginUserId: String?) {
+        val url = "https://collab-api.hobo.video/api/applied-users/getUser/$loginUserId"; // Ensure this endpoint returns platform data
+        val request = Request.Builder().url(url).build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(
+                        this@MyProfile_AppliedScreen,
+                        "Failed to load posts: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                Log.e("ProfileAppliedScreen", "Error fetching posts", e)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    if (!response.isSuccessful) {
+                        runOnUiThread {
+                            Toast.makeText(
+                                this@MyProfile_AppliedScreen,
+                                "Error: ${response.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        return
+                    }
+
+                    val responseBody = response.body?.string()
+                    Log.d("ProfileAppliedScreen", "Response Body: $responseBody")
+                    if (responseBody != null) {
+                        val posts = parsePostsJson(responseBody)
+                        Log.d("ProfileAppliedScreen", "Parsed Posts: $posts")
+                        runOnUiThread {
+                            val postAdapter = AppliedPostAdapter(posts)
+                            postsRecyclerView.adapter = postAdapter
+                        }
+                    }
+                }
+            }
+        })
+    }
+    private fun parsePostsJson(json: String): List<Post> {
+        val posts = mutableListOf<Post>()
+        val jsonArray = JSONArray(json)
+        for (i in 0 until jsonArray.length()) {
+            val jsonObject = jsonArray.getJSONObject(i)
+            Log.d("ProfileAppliedScreen", "Post: $jsonObject")
+
+            val platformLogoArray = jsonObject.optJSONArray("platforms")
+            Log.d("ProfileAppliedScreen", "Platform Logo Array: $platformLogoArray")
+
+            val platformLogos = mutableListOf<String>()
+
+            if (platformLogoArray != null) {
+                for (j in 0 until platformLogoArray.length()) {
+                    platformLogos.add(platformLogoArray.getString(j))
+                }
+            }
+
+            val post = Post(
+                title = jsonObject.getString("title"),
+                description = jsonObject.getString("descriptions"),
+                platformLogo = platformLogos,
+                status = jsonObject.optString("status"),
+                followerCount = jsonObject.optString("followerCount", "N/A"),
+                userName = jsonObject.optString("userName"),
+                profilePic = null,
+                userId = jsonObject.optString("userId"),
+                niche = jsonObject.optString("bio"),
+                about = jsonObject.optString("location")
+            )
+
+            // Fetch the user profile and update the post's profilePic
+            fetchProfileData(post.userId) { userProfile ->
+                userProfile?.let {
+                    post.profilePic = userProfile.profilePic
+                    post.about = userProfile.about
+                    post.niche = userProfile.niche
+                }
+                Log.d("ProfileAppliedScreen", "After fetching Updated Post: $userProfile")
+            }
+
+            posts.add(post)
+        }
+        return posts
+    }
+    private fun fetchProfileData(userId: String?, callback: (UserProfileAppliedScreen?) -> Unit) {
+        if (userId == null) {
+            callback(null)
+            return
+        }
+
+        val request = Request.Builder()
+            .url("https://collab-api.hobo.video/api/getProfile/$userId")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("API_ERROR", "Failed to fetch user profile data: ${e.message}")
+                callback(null)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    response.body?.let { responseBody ->
+                        val json = responseBody.string()
+                        Log.d("JSON Response", json)
+
+                        val moshi = Moshi.Builder()
+                            .add(KotlinJsonAdapterFactory())
+                            .build()
+                        val listType = Types.newParameterizedType(List::class.java, UserProfileAppliedScreen::class.java)
+                        val jsonAdapter: JsonAdapter<List<UserProfileAppliedScreen>> = moshi.adapter(listType)
+
+                        try {
+                            val userProfiles = jsonAdapter.fromJson(json)
+                            Log.d("APPLIED_PROFILE", "User Profiles: $userProfiles")
+                            val userProfile = userProfiles?.firstOrNull() // Assuming you want the first profile
+                            if (userProfile?.userID == null) {
+                                Log.w("API_WARNING", "User ID is missing in the response")
+                            }
+                            callback(userProfile)
+                        } catch (e: Exception) {
+                            Log.e("JSON_PARSE_ERROR", "Failed to parse JSON: ${e.message}", e)
+                            callback(null)
+                        }
+                    } ?: run {
+                        Log.e("API_ERROR", "Response body is null")
+                        callback(null)
+                    }
+                } else {
+                    Log.e("API_ERROR", "Unsuccessful response: ${response.code}")
+                    callback(null)
+                }
+            }
+        })
+    }
+}
+
+
+class AppliedPostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<AppliedPostAdapter.PostViewHolder>() {
+
+    class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.findViewById(R.id.need_fellow)
+        val description: TextView = itemView.findViewById(R.id.need_fellow_description)
+        val platformLogoContainer: LinearLayout = itemView.findViewById(R.id.platform_logo_container)
+        val statusButton: Button = itemView.findViewById(R.id.status_btn)
+        val followerCount : TextView = itemView.findViewById(R.id.creator_follower_count)
+        val userName: TextView = itemView.findViewById(R.id.creators_name)
+        var profileImageView: ImageView = itemView.findViewById(R.id.creators_profile_image) // Add ImageView for profile picture
+        val bio: TextView = itemView.findViewById(R.id.creators_bio)
+        val location: TextView = itemView.findViewById(R.id.location_details)
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.applied_items_post, parent, false)
+        return PostViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+        val post = posts[position]
+        Log.d("ProfileAppliedScreen", "Post: $post")
+        holder.title.text = post.title
+        holder.description.text = post.description
+        holder.followerCount.text = post.followerCount
+        holder.userName.text = post.userName
+        holder.bio.text = post.niche
+        holder.location.text = post.about
+
+        // Load profile picture if available
+        post.profilePic?.let {
+            Glide.with(holder.itemView.context)
+                .load(it)
+                .into(holder.profileImageView)
+        }
+
+        // Clear any existing views in the container
+        holder.platformLogoContainer.removeAllViews()
+
+        // Create a new LinearLayout
+        val linearLayout = LinearLayout(holder.itemView.context).apply {
+            orientation = LinearLayout.HORIZONTAL
+            layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(16, 10, 0, 0)
+            }
+        }
+
+        // Add ImageViews for each platform logo
+        post.platformLogo.forEach { platform ->
+            val imageView = ImageView(holder.itemView.context).apply {
+                layoutParams = LinearLayout.LayoutParams(64, 64).apply {
+                    setMargins(16, 10, 0, 0)
+                }
+                setImageDrawable(getPlatformDrawable(holder.itemView.context, platform))
+            }
+            linearLayout.addView(imageView)
+        }
+
+        // Add the LinearLayout to the platformLogoContainer
+        holder.platformLogoContainer.addView(linearLayout)
+
+        // Set the status button text and background based on status
+        when (post.status) {
+//            "Pending" -> {
+//                holder.statusButton.text = "Pending"
+//                holder.statusButton.setBackgroundResource(R.drawable.blue_status_btn)
+//            }
+            "Selected" -> {
+                holder.statusButton.text = "Selected"
+                holder.statusButton.setBackgroundResource(R.drawable.green_status_btn)
+            }
+            "Rejected" -> {
+                holder.statusButton.text = "Rejected"
+                holder.statusButton.setBackgroundResource(R.drawable.red_status_btn)
+            }
+            "On Hold" -> {
+                holder.statusButton.text = "On Hold"
+                holder.statusButton.setBackgroundResource(R.drawable.orange_status_btn)
+            }
+            else -> {
+                holder.statusButton.text = "Pending"
+                holder.statusButton.setBackgroundResource(R.drawable.blue_status_btn)
+            }
+        }
+
+
+        // Set the background drawable based on status
+        val backgroundResource = when (post.status) {
+            "Pending" -> R.drawable.blue_status_btn
+            "Selected" -> R.drawable.green_status_btn
+            "Rejected" -> R.drawable.red_status_btn
+            "On Hold" -> R.drawable.orange_status_btn
+            else -> null
+        }
+        // Set the background resource if it's not null, otherwise hide the button
+        if (backgroundResource != null) {
+            holder.statusButton.setBackgroundResource(backgroundResource)
+            holder.statusButton.visibility = View.VISIBLE
+        }
+        // Example of handling button click to update status
+        holder.statusButton.setOnClickListener {
+            // Logic to update status, e.g., show a dialog to select new status
+            updatePostStatus(position, "New Status") // Replace "New Status" with actual logic
+        }
+    }
+
+    private fun getPlatformDrawable(context: Context, platform: String): Drawable? {
+        return when (platform) {
+            "Instagram" -> ContextCompat.getDrawable(context, R.drawable.insta_logo) // Replace with your drawable resource
+            "Facebook" -> ContextCompat.getDrawable(context, R.drawable.facebook_logo) // Replace with your drawable resource
+            "Snapchat" -> ContextCompat.getDrawable(context, R.drawable.snapchat_logo) // Replace with your drawable resource
+            else -> ContextCompat.getDrawable(context, R.drawable.logo1) // Replace with a default logo
+        }
+    }
+
+    override fun getItemCount(): Int = posts.size
+
+    fun updatePostStatus(position: Int, newStatus: String) {
+        if (position in posts.indices) {
+            posts[position].status = newStatus
+            notifyItemChanged(position)
+        }
+    }
+}
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow Layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#000000"/>
+            <corners android:radius="6dp"/>
+            <padding
+                    android:left="1dp"
+                    android:top="0dp"
+                    android:right="1dp"
+                    android:bottom="0dp"/>
+        </shape>
+    </item>
+
+    <!-- Main Button Layer -->
+    <item
+            android:bottom="4dp"
+            android:left="4dp"
+            android:right="0dp"
+            android:top="0dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFF72D"/>
+            <corners android:radius="6dp"/>
+            <stroke
+                    android:width="2dp"
+                    android:color="#000000"/>
+        </shape>
+    </item>
+
+    <!-- Vector Layer -->
+    <item android:left="3dp"
+          android:bottom="4dp"
+          android:right="0dp"
+          android:top="0dp">
+        <vector
+                android:width="158dp"
+                android:height="44dp"
+                android:viewportWidth="158"
+                android:viewportHeight="44">
+            <group>
+                <clip-path
+                        android:pathData="M6 0H152C155.314 0 158 2.68629 158 6V38C158 41.3137 155.314 44 152 44H6C2.68629 44 0 41.3137 0 38V6C0 2.68629 2.68629 0 6 0Z"/>
+                <path
+                        android:pathData="M0 0V44H158V0"
+                        android:fillColor="#FFF72D"/>
+                <path
+                        android:pathData="M6 0H152C155.314 0 158 2.68629 158 6V38C158 41.3137 155.314 44 152 44H6C2.68629 44 0 41.3137 0 38V6C0 2.68629 2.68629 0 6 0Z"
+                        android:strokeWidth="2"
+                        android:strokeColor="#000000"/>
+            </group>
+        </vector>
+    </item>
+</layer-list>

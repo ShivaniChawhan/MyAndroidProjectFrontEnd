@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/home_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1B1B1B"
+        tools:context=".MainActivity">
+
+        <!-- Top Bar -->
+        <LinearLayout
+                android:id="@+id/top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="1508dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/top_bar_frame">
+
+            <!-- logo -->
+            <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/logo1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginBottom="8dp"/>
+
+            <!-- Notification frame-->
+            <LinearLayout
+                    android:id="@+id/notificationlayout"
+                    android:layout_width="91dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintStart_toStartOf="@+id/logo"
+                    android:layout_marginStart="237dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="7dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/notification_frame"
+                    android:padding="8dp">
+
+                <!-- notification count-->
+                <TextView
+                        android:id="@+id/notification_count"
+                        android:layout_width="17dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/notification_count"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="16sp"
+                        android:lineHeight="24sp"
+                        android:letterSpacing="0.03"
+                        android:textColor="#FFFFFF"
+                        android:layout_gravity="center_vertical"
+                        tools:targetApi="p"/>
+                <View
+                        android:id="@+id/notification_line"
+                        android:layout_width="1dp"
+                        android:layout_height="17.5dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintVertical_bias="0.5"
+                        android:background="@drawable/partition_line"/>
+
+                <!-- notification icon-->
+                <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+                    <ImageView
+                            android:id="@+id/notificaionIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/notification"
+                    />
+                    <ImageView
+                            android:id="@+id/notificationDot"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_gravity="top|end"
+                            android:background="@drawable/ecllipse"
+                            android:backgroundTint="@color/app_Color"
+                            android:contentDescription="New notification Indicator"/>
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    <ScrollView
+            android:id="@+id/scrollable_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="66dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/endOfScrollView"
+            android:orientation="vertical"
+            tools:ignore="NotSibling">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        <!-- round corner rectangle frame -->
+        <LinearLayout
+                android:id="@+id/round_rectangle_frame"
+                android:layout_width="836dp"
+                android:layout_height="192dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="694dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardCornerRadius="25dp"
+                app:cardBackgroundColor="@android:color/black">
+
+            <!-- left rectangle-->
+            <FrameLayout
+                    android:id="@+id/left_round_rectangle"
+                    android:layout_width="230dp"
+                    android:layout_height="147dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/round_rectangle"/>
+
+            <!-- center rectangle-->
+            <FrameLayout
+                    android:id="@+id/center_round_rectangle"
+                    android:layout_width="336dp"
+                    android:layout_height="178dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_facebook_banner">
+
+            </FrameLayout>
+
+            <!-- right rectangle-->
+            <FrameLayout
+                    android:id="@+id/right_round_rectangle"
+                    android:layout_width="230dp"
+                    android:layout_height="147dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/round_rectangle"/>
+        </LinearLayout>
+
+        <!-- filters layout -->
+        <FrameLayout
+                android:id="@+id/filters_layout"
+                android:layout_width="match_parent"
+                android:layout_height="233.5dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="400dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/round_rectangle_frame"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/filters_background"
+                app:layout_constraintHorizontal_bias="0.0">
+            <!-- filters text-->
+            <TextView
+                    android:id="@+id/filters_layout_text"
+                    android:layout_width="52dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="321dp"
+                    android:layout_marginBottom="230dp"
+                    android:gravity="top"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/filter_text"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineHeight="24sp"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#FFFFFF"/>
+
+            <!-- niche layout-->
+            <View
+                    android:id="@+id/niche_rectangle"
+                    android:layout_width="173.51dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginBottom="107dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="192.49dp"
+                    android:background="@drawable/niche_layout"/>
+            <TextView
+                    android:id="@+id/nicheText"
+                    android:layout_width="47dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="50.5dp"
+                    android:layout_marginStart="21.82dp"
+                    android:layout_marginBottom="167dp"
+                    android:layout_marginEnd="305.73dp"
+                    android:gravity="top"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/niche_text"
+                    android:fontFamily="@font/raleway_bold"
+                    android:lineHeight="19sp"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#0F0F0F"/>
+            <ImageView
+                    android:id="@+id/niche_Image"
+                    android:layout_width="49.48dp"
+                    android:layout_height="50.95dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="67.5dp"
+                    android:layout_marginStart="121.39dp"
+                    android:layout_marginBottom="115.05dp"
+                    android:layout_marginEnd="204.13dp"
+                    android:background="@drawable/niche_image"/>
+
+            <!-- collab layout-->
+            <View
+                    android:id="@+id/collab_rectangle"
+                    android:layout_width="174dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginBottom="107.5dp"
+                    android:layout_marginStart="195dp"
+                    android:layout_marginEnd="9dp"
+                    android:background="@drawable/collabs_rectangle"/>
+            <TextView
+                    android:id="@+id/collabText"
+                    android:layout_width="63.27dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="50.5dp"
+                    android:layout_marginStart="206.82dp"
+                    android:layout_marginBottom="167dp"
+                    android:layout_marginEnd="104.91dp"
+                    android:gravity="top"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/collab_text"
+                    android:fontFamily="@font/raleway_bold"
+                    android:lineHeight="19sp"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#0F0F0F"/>
+            <ImageView
+                    android:id="@+id/collab_image"
+                    android:layout_width="74.78dp"
+                    android:layout_height="47.3dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="71.4dp"
+                    android:layout_marginStart="282.75dp"
+                    android:layout_marginBottom="114.8dp"
+                    android:layout_marginEnd="17.46dp"
+                    android:background="@drawable/collab_image"/>
+
+            <!-- Followers count layout-->
+            <View
+                    android:id="@+id/followers_rectangle"
+                    android:layout_width="174dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="136.5dp"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="192dp"
+                    android:background="@drawable/followers_count_rectangle"/>
+            <TextView
+                    android:id="@+id/followersText"
+                    android:layout_width="78.78dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginStart="21.96dp"
+                    android:layout_marginBottom="54dp"
+                    android:layout_marginEnd="274.26dp"
+                    android:gravity="top"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/followers_text"
+                    android:fontFamily="@font/raleway_bold"
+                    android:lineHeight="19sp"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#0F0F0F"/>
+            <ImageView
+                    android:id="@+id/follower_image"
+                    android:layout_width="66.02dp"
+                    android:layout_height="54.26dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="173.5dp"
+                    android:layout_marginStart="108.72dp"
+                    android:layout_marginBottom="5.74dp"
+                    android:layout_marginEnd="200.26dp"
+                    android:background="@drawable/followers_image"/>
+
+            <!--  more filters layout-->
+            <View
+                    android:id="@+id/more_rectangle"
+                    android:layout_width="174dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="136.5dp"
+                    android:layout_marginBottom="107.5dp"
+                    android:layout_marginStart="195dp"
+                    android:layout_marginEnd="9dp"
+                    android:background="@drawable/more_filters_layout"/>
+
+            <!-- inner frame-->
+            <FrameLayout
+                    android:id="@+id/inner_frame"
+                    android:layout_width="41dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="168.5dp"
+                    android:layout_marginStart="247.98dp"
+                    android:layout_marginBottom="41dp"
+                    android:layout_marginEnd="86.02dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                <!-- inner frame text-->
+                <TextView
+                        android:id="@+id/more_filters_text"
+                        android:layout_width="42dp"
+                        android:layout_height="24dp"
+                        android:text="@string/inner_text"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineHeight="24sp"
+                        android:textSize="16sp"
+                        android:letterSpacing="0.02"
+                        android:textColor="#FFFFFF"/>
+                <View
+                        android:id="@+id/more_filters_layout"
+                        android:layout_width="174dp"
+                        android:layout_height="88dp"
+                        android:layout_marginTop="136.5dp"
+                        android:layout_marginBottom="9dp"
+                        android:layout_marginStart="195dp"
+                        android:layout_marginEnd="9dp"
+                        android:background="@drawable/more_filters_layout"/>
+            </FrameLayout>
+            <ImageView
+                    android:id="@+id/vector"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="297dp"
+                    android:layout_marginTop="170dp"
+                    android:layout_marginEnd="62.02dp"
+                    android:layout_marginBottom="45dp"
+                    android:contentDescription="Plus Icon"
+                    android:src="@drawable/plus_vector"/>
+        </FrameLayout>
+
+        <!-- Creators layout 1-->
+        <FrameLayout
+                android:id="@+id/creators_layout1"
+                android:layout_width="match_parent"
+                android:layout_height="348dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/filters_layout"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/creator_rectangle">
+
+            <!-- creators photo 1-->
+            <ImageView
+                    android:id="@+id/creators_profile_image1"
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="236dp"
+                    android:layout_marginEnd="263dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@drawable/creator_image"/>
+
+            <!-- Creators name 1 -->
+            <TextView
+                    android:id="@+id/creators_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginBottom="282dp"
+                    android:layout_marginEnd="90dp"
+                    android:gravity="top"
+                    android:fontFamily="@font/raleway_bold"
+                    android:lineHeight="38sp"
+                    android:textSize="32sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#2F302E"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/creators_name"/>
+
+            <!-- creators follower count 1-->
+            <TextView
+                    android:id="@+id/creator_follower_count1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="76dp"
+                    android:layout_marginStart="135dp"
+                    android:layout_marginBottom="248dp"
+                    android:layout_marginEnd="221dp"
+                    android:text="@string/creator_follower_count"
+                    android:gravity="center_horizontal|top"
+                    android:fontFamily="@font/opensans_bold"
+                    android:lineHeight="24sp"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#2F302E"/>
+            <TextView
+                    android:id="@+id/follower_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="77.5dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginBottom="249.5dp"
+                    android:layout_marginEnd="149dp"
+                    android:text="@string/followers_name"
+                    android:gravity="center_horizontal|top"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineHeight="21sp"
+                    android:textSize="14sp"
+                    android:textColor="#2F302E"/>
+
+            <!-- post count -->
+            <TextView
+                    android:id="@+id/post_count1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_marginTop="77dp"
+                    android:layout_marginStart="239.5dp"
+                    android:layout_marginBottom="249dp"
+                    android:layout_marginEnd="106.5dp"
+                    android:gravity="center_horizontal|top"
+                    android:text="@string/post_count"
+                    android:fontFamily="@font/opensans_bold"
+                    android:lineHeight="22sp"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#2F302E"/>
+
+            <TextView
+                    android:id="@+id/post_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="274.5dp"
+                    android:layout_marginTop="77.5dp"
+                    android:layout_marginBottom="249.5dp"
+                    android:layout_marginEnd="62.5dp"
+                    android:text="@string/post_name"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineHeight="21sp"
+                    android:textSize="14sp"
+                    android:textColor="#2F302E"/>
+
+            <!-- creators bio 1 -->
+            <TextView
+                    android:id="@+id/creators_bio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="125dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="204dp"
+                    android:layout_marginEnd="134dp"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineHeight="24sp"
+                    android:textSize="16sp"
+                    android:textColor="#4C4C4C"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/creators_bio"/>
+
+            <!-- Location Details 1 -->
+            <View
+                    android:id="@+id/location1"
+                    android:layout_width="15.24dp"
+                    android:layout_height="17.48dp"
+                    android:layout_marginTop="155.76dp"
+                    android:layout_marginStart="23.88dp"
+                    android:layout_marginBottom="174.76dp"
+                    android:layout_marginEnd="335.88dp"
+                    android:background="@drawable/location"/>
+            <TextView
+                    android:id="@+id/location_details1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="154dp"
+                    android:layout_marginStart="43.12dp"
+                    android:layout_marginBottom="173dp"
+                    android:layout_marginEnd="245.88dp"
+                    android:text="@string/location_details"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineHeight="21sp"
+                    android:textSize="14sp"
+                    android:textColor="#4C4C4C"/>
+
+            <View
+                    android:id="@+id/creator_line1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="189dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginBottom="159dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="#33000000"/>
+
+            <!-- need fellow creator text 1-->
+            <TextView
+                    android:id="@+id/need_fellow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/need_fellow"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="205dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="110dp"
+                    android:layout_marginBottom="124dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:lineHeight="29sp"
+                    android:textSize="24sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#2F302E"/>
+
+            <!-- need fellow creator description-->
+            <TextView
+                    android:id="@+id/need_fellow_description1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="@string/fellow_creator_description"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="236dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginBottom="80dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineHeight="24sp"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.02"
+                    android:textColor="#4C4C4C"/>
+
+            <!-- platform logos-->
+            <FrameLayout
+                   android:id="@+id/platform_logo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="285dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="150dp"
+                    android:layout_marginBottom="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:orientation="horizontal"/>
+            </FrameLayout>
+
+            <ImageView
+                    android:id="@+id/add_vector1"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
+                    android:background="@drawable/pink_ecllipse"
+                    android:scaleType="center"
+                    android:tint="@color/white"
+                    android:elevation="4dp"
+                    android:layout_marginTop="258.5dp"
+                    android:layout_marginStart="293dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="13.5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+        </FrameLayout>
+
+        <!-- bottom bar 1-->
+        <FrameLayout
+                android:id="@+id/bottom_bar1"
+                android:layout_width="375dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/creators_layout1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="476.5dp">
+
+            <!-- share button -->
+            <ImageView
+                    android:id="@+id/share_button1"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="10.5dp"
+                    android:layout_marginEnd="332.5dp"
+                    android:background="@drawable/share"/>
+
+            <!-- copy button -->
+            <ImageView
+                    android:id="@+id/copy_button1"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="74.5dp"
+                    android:layout_marginEnd="268.5dp"
+                    android:background="@drawable/document_copy"/>
+
+            <!-- archive button -->
+            <ImageView
+                    android:id="@+id/archive_button1"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="332.5dp"
+                    android:layout_marginEnd="10.5dp"
+                    android:background="@drawable/archive_add"/>
+        </FrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_postcard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/bottom_bar1"
+                    tools:listitem="@layout/postcard_homescreen" />
+
+            <FrameLayout
+            android:id="@+id/endOfScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="150dp"
+            app:layout_constraintTop_toBottomOf="@id/recycler_postcard"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    <!-- menu list layout-->
+        <FrameLayout
+                android:id="@+id/menu_frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:clipToOutline="true"
+                android:background="#2A2A2A">
+
+            <!-- Home button -->
+            <View
+                    android:id="@+id/home_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginBottom="34dp"
+                    android:layout_marginEnd="343dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/home_btn"/>
+
+            <TextView
+                    android:id="@+id/home_text"
+                    android:layout_width="36dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="42dp"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginEnd="337dp"
+                    android:text="@string/home_btn_text"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="-2sp"
+                    android:lineHeight="16sp"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="top"/>
+
+            <!-- collab button -->
+            <View
+                    android:id="@+id/collab_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginStart="188dp"
+                    android:layout_marginBottom="34dp"
+                    android:layout_marginEnd="185dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/collab_btn"/>
+
+            <TextView
+                    android:id="@+id/collab_text"
+                    android:layout_width="64dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="42dp"
+                    android:layout_marginStart="171dp"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginEnd="177dp"
+                    android:text="@string/my_collab"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="-2sp"
+                    android:lineHeight="16sp"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="top"/>
+
+            <!-- profile button -->
+            <View
+                    android:id="@+id/profile_button"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="342.5dp"
+                    android:layout_marginBottom="34dp"
+                    android:layout_marginEnd="26.5dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/profile_btn"/>
+
+            <TextView
+                    android:id="@+id/profile_text"
+                    android:layout_width="37dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="44dp"
+                    android:layout_marginStart="338dp"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/profile_btn_text"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="-2sp"
+                    android:lineHeight="16sp"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="top"/>
+
+        </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

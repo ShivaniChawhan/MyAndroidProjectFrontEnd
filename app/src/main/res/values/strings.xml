@@ -1,0 +1,490 @@
+<resources>
+    <string name="app_name">Hobo-Collab-App</string>
+    <string name="slide1">
+        1st slide
+    </string>
+    <string name="slide2">
+        2nd slide
+    </string>
+    <string name="slide3">
+        3rd slide
+    </string>
+
+    <string name="body1">
+        Lorem ipsum dolor sit amet consectetur.
+        Nullam ipsum blandit cras lacus nunc amet.
+        Elit amet ac aliquet in tincidunt ut.
+    </string>
+
+    <string name="body2">
+        Lorem ipsum dolor sit amet consectetur.
+        Nullam ipsum blandit cras lacus nunc amet.
+        Elit amet ac aliquet in tincidunt ut.
+    </string>
+
+    <string name="body3">
+        Lorem ipsum dolor sit amet consectetur.
+        Nullam ipsum blandit cras lacus nunc amet.
+        Elit amet ac aliquet in tincidunt ut.
+    </string>
+
+    <string name="next">
+        Next
+    </string>
+
+    <string name="skip_button">
+        Skip
+    </string>
+    <string name="Get_started_button">
+        Get Started
+    </string>
+
+    <string name="notification_count">
+        10
+    </string>
+
+    <string name="message_count">
+        10
+    </string>
+
+    <string name="filter_text">
+        Filters
+    </string>
+
+    <string name="niche_text">
+        Niche
+    </string>
+    <string name="collab_text">
+        Collabs
+    </string>
+    <string name="followers_text">
+        Followers
+        count
+    </string>
+    <string name="inner_text">
+        More
+    </string>
+    <string name="creators_name">
+        John Doe
+    </string>
+    <string name="creators_bio">
+        24 years, Lifestyle, Fashion
+    </string>
+    <string name="need_fellow">
+        Need fellow creator
+    </string>
+    <string name="fellow_creator_description">
+        Lorem ipsum dolor sit amet consectetur. Aliquet ornare ornare
+    </string>
+    <string name="view_button">
+        View
+    </string>
+    <string name="home_btn_text">
+        Home
+    </string>
+    <string name="my_collab">
+        My Collab
+    </string>
+    <string name="profile_btn_text">
+        Profile
+    </string>
+    <string name="creator_follower_count">
+        2k
+    </string>
+    <string name="followers_name">
+        Followers
+    </string>
+    <string name="post_count">
+        230
+    </string>
+    <string name="post_name">
+        Posts
+    </string>
+    <string name="location_details">
+        Delhi, India
+    </string>
+    <string name="login_signup">
+        LOG IN / SIGN UP
+    </string>
+    <string name="login_description_text">
+        Log in or sign up to continue your experience
+    </string>
+    <string name="continue_with_ig_text">
+        Continue with Instagram
+    </string>
+    <string name="choose_collab_text">
+        Choose collab type
+    </string>
+    <string name="diff_collabs_name">
+        Call for a duel dance video
+    </string>
+    <string name="collab_descriptions">
+        Lorem ipsum dolor sit amet consectetur. Aliquet ornare ornare
+    </string>
+
+    <string name="notification_text">
+        Notifications
+    </string>
+    <string name="today">
+        Today
+    </string>
+    <string name="message_request">
+        New message request
+    </string>
+    <string name="message_description">
+        Lorem ipsum dolor sit ame...
+    </string>
+    <string name="hrs_details">
+        1h ago
+    </string>
+    <string name="status1">
+        Message
+    </string>
+    <string name="yesterday">
+        Yesterday
+    </string>
+    <string name="application_request">
+        Application accepted
+    </string>
+    <string name="time1">
+        6:00 AM
+    </string>
+    <string name="status2">
+        Approved
+    </string>
+    <string name="application_reject">
+        Application rejected
+    </string>
+    <string name="time2">
+        12:00 AM
+    </string>
+    <string name="status3">
+        Rejected
+    </string>
+    <string name="application_pending">
+        Application pending
+    </string>
+    <string name="time3">
+        1:00 PM
+    </string>
+    <string name="status4">
+        Pending
+    </string>
+    <string name="application_onhold">
+        Application on hold
+    </string>
+    <string name="time4">
+        5:00 PM
+    </string>
+    <string name="status5">
+        On hold
+    </string>
+    <string name="app_management">
+        All Applications
+    </string>
+    <string name="all">
+        All
+    </string>
+    <string name="accepted">
+        Accepted
+    </string>
+    <string name="rejected">
+        Rejected
+    </string>
+    <string name="on_hold">
+        On hold
+    </string>
+    <string name="pending">
+        Pending
+    </string>
+
+    <string name="chat">
+        Chat
+    </string>
+    <string name="influencer_bio">
+        Lorem ipsum dolor sit amet consectetur.
+    </string>
+    <string name="platform">
+        Platform
+    </string>
+    <string name="followers">
+        Followers
+    </string>
+    <string name="engagement">
+        Engagement rate
+    </string>
+    <string name="number_of_p">
+        Number of posts
+    </string>
+    <string name="f_count">
+        2k
+    </string>
+    <string name="ER_count">
+        89%
+    </string>
+    <string name="p_count">
+        112
+    </string>
+    <string name="view_insight"><u>View Insights</u></string>
+
+    <string name="accept_btn">
+        Accept
+    </string>
+    <string name="reject_btn">
+        Reject
+    </string>
+    <string name="hold_btn">
+        Hold
+    </string>
+    <string name="post_collab">
+        Post collaboration
+    </string>
+    <string name="title">
+        Title
+    </string>
+    <string name="discription">
+        Discription
+    </string>
+    <string name="platforms_text">
+        Find John also on
+    </string>
+    <string name="withdraw">
+        Withdraw
+    </string>
+    <string name="view_application">
+        View applications
+    </string>
+    <string name="edit">
+        Edit
+    </string>
+    <string name="delete">
+        Delete
+    </string>
+    <string name="pc_text">
+        Post collaboration
+    </string>
+    <string name="personal_in">
+        Personal Info
+    </string>
+    <string name="add_profile">
+        Add profile picture
+    </string>
+    <string name="name">
+        Name
+    </string>
+    <string name="instagram_handle">
+        Instagram handle
+    </string>
+    <string name="followers_c">
+        Followers count
+    </string>
+    <string name="niche">
+        Niche
+    </string>
+    <string name="about">
+        About
+    </string>
+    <string name="portfolio_l">
+        Portfolio link
+    </string>
+    <string name="insight">
+        Insight
+    </string>
+    <string name="option_1">
+        Option 1
+    </string>
+    <string name="option_2">
+        Option 2
+    </string>
+    <string name="option_3">
+        Option 3
+    </string>
+    <string name="save">
+        Save
+    </string>
+
+    <string name="post_detail">
+        Post details
+    </string>
+    <string name="title_um_do">
+        Title : um dolor sit amet
+    </string>
+    <string name="coll_for">
+        Collaboration for
+    </string>
+    <string name="description">
+        Description
+    </string>
+    <string name="description_body">
+        Lorem ipsum dolor sit amet consectetur. Aliquet ornare ornare Lorem ipsum dolor sit amet consectetur. Aliquet ornare ornare
+    </string>
+    <string name="k10_20k">
+        10k - 20k
+    </string>
+    <string name="desired_out">
+        Desired Outcome
+    </string>
+    <string name="desired_out_body">
+        Lorem ipsum dolor sit amet consectetur. Aliquet ornare ornare
+    </string>
+    <string name="timeline">
+        Timeline
+    </string>
+    <string name="timeline_body">
+        Lorem ipsum dolor sit amet
+    </string>
+    <string name="collab_theme">
+        Collaboration Theme
+    </string>
+    <string name="collab_theme_body">
+        Lorem ipsum dolor sit amet
+    </string>
+    <string name="apply">
+        Apply
+    </string>
+    <string name="insights_fo">
+        1 month insights
+    </string>
+    <string name="period">
+        Period
+    </string>
+    <string name="sept_24_oct">
+        Sept 24-Oct 24
+    </string>
+    <string name="top_locations">
+        Top locations
+    </string>
+    <string name="cities">
+        Cities
+    </string>
+    <string name="countries">
+        Countries
+    </string>
+    <string name="delhi">
+        Delhi
+    </string>
+    <string name="mumbai">
+        Mumbai
+    </string>
+    <string name="kolkota">
+        Kolkota
+    </string>
+    <string name="bangalore">
+        Bangalore
+    </string>
+    <string name="pune">
+        Pune
+    </string>
+    <string name="percent">
+        4.7%
+    </string>
+    <string name="age_range">
+        Age range
+    </string>
+    <string name="men">
+        Men
+    </string>
+    <string name="women">
+        Women
+    </string>
+    <string name="gender">
+        Gender
+    </string>
+    <string name="women_percent_c">
+        75.55%
+    </string>
+    <string name="men_percent_c">
+        15.45%
+    </string>
+    <string name="settings">
+        Settings
+    </string>
+    <string name="account_set">
+        Account settings
+    </string>
+    <string name="privacy_set">
+        Privacy settings.
+    </string>
+    <string name="notificatio">
+        Notification preferences.
+    </string>
+    <string name="log_out">
+        Log out
+    </string>
+    <string name="my_profile">
+        My profile
+    </string>
+    <string name="john_doe">
+        John doe
+    </string>
+    <string name="fo_engage">
+        2k Followers, 70% Engagement
+    </string>
+    <string name="more">
+        ...more
+    </string>
+    <string name="edit_profile">
+        Edit profile
+    </string>
+    <string name="user_posts">
+        Posts
+    </string>
+    <string name="applied_col">
+       My Applied collabs
+    </string>
+    <string name="saved">
+        Saved
+    </string>
+    <string name="caption">
+        Lorem ipsum dolor sit amet
+    </string>
+    <string name="selected_btn">
+        Selected
+    </string>
+    <string name="pending_btn">
+        Pending
+    </string>
+    <string name="on_hold_btn">
+        On hold
+    </string>
+    <string name="rejected_btn">
+        Rejected
+    </string>
+    <string name="report_prof">
+        Report profile
+    </string>
+    <string name="write_issue">
+        Write the issue
+    </string>
+    <string name="submit_repo">
+        Submit report
+    </string>
+    <string name="all_collabs">
+        All collabs
+    </string>
+    <string name="my_posted_c">
+        My posted collabs
+    </string>
+    <string name="my_applied_">
+        My applied collabs
+    </string>
+    <string name="applied">
+        24 Applied
+    </string>
+    <string name="public_prof">
+        Public profile
+    </string>
+    <string name="notification_description">
+        Lorem ipsum dolor sit ame dolor sit ame...
+    </string>
+    <string name="required_fo">
+        Required follower
+    </string>
+
+    <string-array name="followers_options">
+            <item>2k-10k</item>
+            <item>10k-50k</item>
+            <item>50k-100k</item>
+    </string-array>
+
+</resources>

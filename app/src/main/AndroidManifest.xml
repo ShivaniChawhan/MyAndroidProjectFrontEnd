@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.hobo_collab_app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+                     android:maxSdkVersion="32"/>
+
+    <application
+            android:allowBackup="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.HoboCollabApp"
+            android:networkSecurityConfig="@xml/networkfile"
+            tools:targetApi="31">
+
+        <activity
+                android:name=".SplashScreenActivity"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".Login"/>
+        <activity android:name=".SignUp"/>
+        <activity android:name=".com.example.hobo_collab_app.OTP_Screen"/>
+        <activity android:name=".OnBoardScreen_1" />
+        <activity android:name=".OnBoardScreen_2" />
+        <activity android:name=".OnBoardScreen_3" />
+        <activity android:name=".ui.theme.Home_Screen"/>
+        <activity android:name=".Login_Signup"/>
+        <activity android:name=".Personal_Info_Screen"/>
+        <activity android:name=".Choose_Collab_screen"/>
+        <activity android:name=".Notification_Screen"/>
+        <activity android:name=".Post_Collabartion_Screen"/>
+        <activity android:name=".MyCollabs_Screen"/>
+        <activity android:name=".My_Profile_Screen"/>
+        <activity android:name=".App_Management_Screen"/>
+        <activity android:name=".Applied_Collab_Screen"/>
+        <activity android:name=".Insights_Screen"/>
+        <activity android:name=".Setting_Screen"/>
+        <activity android:name=".MyView_Screen"/>
+        <activity android:name=".PostDetails_ApplyScreen"/>
+        <activity android:name=".PostDetails_WithdrawScreen"/>
+        <activity android:name=".PostDetails_EditScreen"/>
+        <activity android:name=".Public_Profile_Screen"/>
+        <activity android:name=".Public_ViewScreen"/>
+        <activity android:name=".Submit_report"/>
+        <activity android:name=".MyProfile_AppliedScreen"/>
+        <activity android:name=".MyProfile_SavedScreen"/>
+
+
+
+        <activity
+                android:name=".MainActivity"
+                android:exported="true"
+                android:label="Hobo-Collab-App"
+                android:theme="@style/Theme.HoboCollabApp"
+                android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                        android:scheme="http"
+                        android:host="10.0.2.2:9001/auth/facebook"
+                        android:path="/callback" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

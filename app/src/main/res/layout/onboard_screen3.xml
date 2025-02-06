@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/onBoard_3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/app_background"
+        tools:ignore="MissingDefaultResource">
+    <View
+            android:id="@+id/rectangle"
+            android:layout_width="375dp"
+            android:layout_height="428dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="412dp"
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:background="@drawable/rectangle">
+    </View>
+    <TextView
+            android:id="@+id/slide_3"
+            android:layout_width="346dp"
+            android:layout_height="96dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginTop="448dp"
+            android:text="3rd slide"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="64sp"
+            android:letterSpacing="0.02"
+            android:lineHeight="96sp"
+            android:textColor="#000000"
+            android:gravity="top">
+    </TextView>
+
+    <TextView
+            android:id="@+id/body3"
+            android:layout_width="346dp"
+            android:layout_height="57dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginTop="552dp"
+            android:text="@string/body3"
+            android:fontFamily="@font/raleway_medium"
+            android:lineHeight="19sp"
+            android:textSize="16sp"
+            android:letterSpacing="0.02"
+            android:textColor="#000000"
+            android:gravity="top">
+    </TextView>
+
+    <View
+            android:id="@+id/line"
+            android:layout_width="375dp"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="661dp"
+            android:background="#000000">
+
+    </View>
+    <Button
+            android:id="@+id/Get_started_button"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="692dp"
+            android:background="@drawable/shadow_effect"
+            android:gravity="center"
+            android:text="@string/Get_started_button"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp"
+            android:lineHeight="24sp"
+            android:letterSpacing="0.03"
+            android:textColor="#000000">
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

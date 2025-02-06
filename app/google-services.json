@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "342623150053",
+    "project_id": "hobo-collab-app",
+    "storage_bucket": "hobo-collab-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342623150053:android:274273ae9a1fd4a821d90c",
+        "android_client_info": {
+          "package_name": "com.example.hobo_collab_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU7WmC89uQK-t_tAH-Uq_izvuXXEkawqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
