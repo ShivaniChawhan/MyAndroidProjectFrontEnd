@@ -115,7 +115,7 @@ class PostDetails_EditScreen : ComponentActivity() {
     private fun fetchData() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/post-collab")
+            .url("http://10.0.2.2:9001/api/post-collab")
             .build()
 
         client.newCall(request).enqueue(object : Callback {

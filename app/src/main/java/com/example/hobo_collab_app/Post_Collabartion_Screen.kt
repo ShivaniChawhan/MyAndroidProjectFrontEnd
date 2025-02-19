@@ -192,7 +192,7 @@ class Post_Collabartion_Screen : ComponentActivity() {
         val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaType(), json)
         Log.d("PostCollaboration", "Request body: $requestBody")
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/post-collab") // Replace with your actual base URL
+            .url("http://10.0.2.2:9001/api/post-collab") // Replace with your actual base URL
             .post(requestBody)
             .build()
 

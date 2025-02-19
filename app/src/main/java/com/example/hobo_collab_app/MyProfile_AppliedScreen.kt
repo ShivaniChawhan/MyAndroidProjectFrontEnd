@@ -158,7 +158,7 @@ class MyProfile_AppliedScreen : ComponentActivity() {
     private fun fetchProfileData(userID: String?) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/getProfile/$userID") // Replace with your actual URL
+            .url("http://10.0.2.2:9001/api/getProfile/$userID") // Replace with your actual URL
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -206,7 +206,7 @@ class MyProfile_AppliedScreen : ComponentActivity() {
     }
 
     private fun fetchPostsFromBackend(loginUserId: String?) {
-        val url = "https://collab-api.hobo.video/api/applied-users/getUser/$loginUserId"; // Ensure this endpoint returns platform data
+        val url = "http://10.0.2.2:9001/api/applied-users/getUser/$loginUserId"; // Ensure this endpoint returns platform data
         val request = Request.Builder().url(url).build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -300,7 +300,7 @@ class MyProfile_AppliedScreen : ComponentActivity() {
         }
 
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/getProfile/$userId")
+            .url("http://10.0.2.2:9001/api/getProfile/$userId")
             .build()
 
         client.newCall(request).enqueue(object : Callback {

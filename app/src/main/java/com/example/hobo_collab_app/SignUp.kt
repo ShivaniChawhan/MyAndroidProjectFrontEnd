@@ -52,7 +52,7 @@ class SignUp: ComponentActivity() {
         }
     }
     private fun performSignUp(name: String, mobile: String, email: String, password: String) {
-        val url = "https://collab-api.hobo.video/api/user/signup"
+        val url = "http://10.0.2.2:9001/api/user/signup"
         Log.d("SignUp", "URL: $url")
 
         val json = JSONObject().apply {

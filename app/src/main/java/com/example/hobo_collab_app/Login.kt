@@ -44,7 +44,7 @@ class Login : ComponentActivity() {
     }
 
     private fun performLogin(email: String, password: String) {
-        val url = "https://collab-api.hobo.video/api/user/login"
+        val url = "http://10.0.2.2:9001/api/user/login"
 
         val json = JSONObject().apply {
             put("email", email)

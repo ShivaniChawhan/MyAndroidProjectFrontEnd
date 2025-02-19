@@ -132,7 +132,7 @@ class App_Management_Screen: ComponentActivity() {
     }
 
     private fun fetchUsersFromBackend(userId: String?) {
-        val url = "https://collab-api.hobo.video/api/applied-users/getAppliedUser/$userId"
+        val url = "http://10.0.2.2:9001/api/applied-users/getAppliedUser/$userId"
 
         val request = Request.Builder()
             .url(url)
@@ -218,7 +218,7 @@ class App_Management_Screen: ComponentActivity() {
     }
 
     private fun fetchUserProfiles(loginUserId: String, callback: (List<User>) -> Unit) {
-        val url = "https://collab-api.hobo.video/api/getProfile/$loginUserId"
+        val url = "http://10.0.2.2:9001/api/getProfile/$loginUserId"
         Log.d("UserProfileFetch", "Fetching user profiles from URL: $url")
 
         val request = Request.Builder()
@@ -388,7 +388,7 @@ class UserAdapter(
             "application/json; charset=utf-8".toMediaTypeOrNull(),
             jsonObject.toString()
         )
-        val url = "https://collab-api.hobo.video/api/applied-users/users/status/${user.loginUserId}/${user.userId}"
+        val url = "http://10.0.2.2:9001/api/applied-users/users/status/${user.loginUserId}/${user.userId}"
         val request = Request.Builder()
             .url(url)
             .put(requestBody) // Use an empty body for POST request

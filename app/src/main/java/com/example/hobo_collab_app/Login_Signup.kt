@@ -36,7 +36,7 @@ class Login_Signup : ComponentActivity() {
         val loginBtn : FrameLayout = findViewById(R.id.continue_with_insta_button)
         loginBtn.setOnClickListener{
             // Define the REST API URL for the Instagram login
-            val loginUrl = "https://collab-api.hobo.video/auth/facebook" // Use your backend URL
+            val loginUrl = "http://10.0.2.2:9001/auth/facebook" // Use your backend URL
 
             // Create an intent to open the URL in the browser
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(loginUrl))

@@ -72,7 +72,7 @@ class OTP_Screen: ComponentActivity() {
     }
 
     private fun verifyOtp(email: String, otp: String, verifyButton: Button) {
-        val url = "https://collab-api.hobo.video/api/user/verifyotp"
+        val url = "http://10.0.2.2:9001/api/user/verifyotp"
         val json = JSONObject().apply {
             put("email", email)
             put("otp", otp)

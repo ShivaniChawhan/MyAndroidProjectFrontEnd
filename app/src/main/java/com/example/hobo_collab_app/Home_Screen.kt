@@ -35,7 +35,7 @@ data class UserProfile(
 ) {
     fun getFullProfilePicUrl(): String? {
         return profilePic?.let {
-            "https://collab-api.hobo.video/$profilePic"
+            "http://10.0.2.2:9001/$profilePic"
         }
     }
 }
@@ -220,7 +220,7 @@ class Home_Screen : ComponentActivity() {
     private fun fetchAdditionalData(callback: (List<AdditionalData>) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/post-collab")
+            .url("http://10.0.2.2:9001/api/post-collab")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -264,7 +264,7 @@ class Home_Screen : ComponentActivity() {
     private fun fetchUserProfileData(userId: String, callback: (UserProfile?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/getProfile/$userId")
+            .url("http://10.0.2.2:9001/api/getProfile/$userId")
             .build()
 
         client.newCall(request).enqueue(object : Callback {

@@ -44,7 +44,7 @@ class Submit_report :ComponentActivity() {
     }
 
     private fun submitReportToServer(issueText: String) {
-        val url = "https://collab-api.hobo.video/api/report/report_profile" // Replace with your backend URL
+        val url = "http://10.0.2.2:9001/api/report/report_profile" // Replace with your backend URL
 
         // Define the media type for JSON
         val JSON = "application/json; charset=utf-8".toMediaType()

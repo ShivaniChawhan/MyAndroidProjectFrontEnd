@@ -143,7 +143,7 @@ class MyCollabs_Screen : ComponentActivity() {
     private fun fetchAdditionalData(userId: String?, callback: (List<AdditionalData>) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/post-collab/$userId")
+            .url("http://10.0.2.2:9001/api/post-collab/$userId")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -187,7 +187,7 @@ class MyCollabs_Screen : ComponentActivity() {
     private fun fetchUserProfileData(userId: String, callback: (UserProfile?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/getProfile/$userId")
+            .url("http://10.0.2.2:9001/api/getProfile/$userId")
             .build()
 
         client.newCall(request).enqueue(object : Callback {

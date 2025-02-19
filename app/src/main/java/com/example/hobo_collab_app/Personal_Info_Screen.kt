@@ -287,7 +287,7 @@ class Personal_Info_Screen:ComponentActivity() {
         val requestBody = requestBodyBuilder.build()
         Log.d("Request Body Data", "Personal Info $jsonBody")
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/addProfile") // Replace with your server's URL
+            .url("http://10.0.2.2:9001/api/addProfile") // Replace with your server's URL
             .post(requestBody)
             .build()
 

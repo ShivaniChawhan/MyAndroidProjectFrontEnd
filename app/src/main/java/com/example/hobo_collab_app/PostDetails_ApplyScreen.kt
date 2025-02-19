@@ -214,14 +214,14 @@ class PostDetails_ApplyScreen : ComponentActivity() {
 
 
         // URLs for checking existing data
-        val loginUserIdExistingUrl = "https://collab-api.hobo.video/api/applied-users/getUser/$loginUserId"
+        val loginUserIdExistingUrl = "http://10.0.2.2:9001/api/applied-users/getUser/$loginUserId"
         Log.d("PostApply", "LoginUserId URL: $loginUserIdExistingUrl")
-        val userIdExistingUrl = "https://collab-api.hobo.video/api/applied-users/getAppliedUser/$userID"
+        val userIdExistingUrl = "http://10.0.2.2:9001/api/applied-users/getAppliedUser/$userID"
         Log.d("PostApply", "User ID URL: $userIdExistingUrl")
 
         // Function to handle the save operation
         fun performSaveOperation() {
-            val url = "https://collab-api.hobo.video/api/applied-users/saveUser"
+            val url = "http://10.0.2.2:9001/api/applied-users/saveUser"
             val userData = mapOf(
                 "userName" to userName.text.toString(),
                 "followerCount" to userFollowerCount.text.toString(),
@@ -348,12 +348,12 @@ class PostDetails_ApplyScreen : ComponentActivity() {
     private fun fetchData(userId: String?, loginUserId: String?) {
         val client = OkHttpClient()
         val request1 = Request.Builder()
-            .url("https://collab-api.hobo.video/api/post-collab/$userId")
+            .url("http://10.0.2.2:9001/api/post-collab/$userId")
             .build()
 
         // Second URL request
         val request2 = Request.Builder()
-            .url("https://collab-api.hobo.video/api/getProfile/$userId") // Ensure this is the correct endpoint
+            .url("http://10.0.2.2:9001/api/getProfile/$userId") // Ensure this is the correct endpoint
             .build()
 
         client.newCall(request1).enqueue(object : Callback {

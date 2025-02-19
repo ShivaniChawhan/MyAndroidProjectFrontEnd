@@ -168,12 +168,12 @@ class PostDetails_WithdrawScreen : ComponentActivity() {
     private fun fetchData(userId: String?) {
         val client = OkHttpClient()
         val request1 = Request.Builder()
-            .url("https://collab-api.hobo.video/api/post-collab/$userId")
+            .url("http://10.0.2.2:9001/api/post-collab/$userId")
             .build()
 
         // Second URL request
         val request2 = Request.Builder()
-            .url("https://collab-api.hobo.video/api/getProfile/$userId") // Ensure this is the correct endpoint
+            .url("http://10.0.2.2:9001/api/getProfile/$userId") // Ensure this is the correct endpoint
             .build()
 
         client.newCall(request1).enqueue(object : Callback {

@@ -142,7 +142,7 @@ class My_Profile_Screen: ComponentActivity() {
     private fun fetchProfileData(userID: String?) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/api/getProfile/$userID") // Replace with your actual URL
+            .url("http://10.0.2.2:9001/api/getProfile/$userID") // Replace with your actual URL
             .build()
 
         client.newCall(request).enqueue(object : Callback {

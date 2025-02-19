@@ -93,7 +93,7 @@ class MainActivity : ComponentActivity() {
         val client = OkHttpClient()
 
         val request = Request.Builder()
-            .url("https://collab-api.hobo.video/facebook") // Use your local backend URL or deployed URL
+            .url("http://10.0.2.2:9001/facebook") // Use your local backend URL or deployed URL
             .build()
 
         // Make the network request on a background thread
@@ -155,7 +155,7 @@ class MainActivity : ComponentActivity() {
         val client = OkHttpClient()
 
         // Build the URL with the authorization code as a query parameter
-        val url = "https://collab-api.hobo.video/facebook/callback?code=$authorizationCode"
+        val url = "http://10.0.2.2:9001/facebook/callback?code=$authorizationCode"
 
         // Create the request
         val request = Request.Builder()
